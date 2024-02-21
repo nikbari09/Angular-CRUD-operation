@@ -2,9 +2,30 @@
   <span>Crud Application</span>
   <span class="example-spacer"></span>
   <button mat-raised-button (click)="openAddEditEmpForm()">
-    Add Employee
+    Sign up
   </button>
+  <!-- <button mat-raised-button routerLink="/login" (click)="loginchange()" style="margin-left: 10px;">
+    Login
+  </button> -->
+  <!-- <mat-button-toggle-group> -->
+    <!-- <mat-button-toggle class="split-button-1">Button 1</mat-button-toggle> -->
+    <button mat-raised-button style="margin-left: 10px;" class="split-button-1 drop-down-button" [matMenuTriggerFor]="dropdownMenuOne">
+      <!-- <mat-icon>arrow_drop_down</mat-icon> -->Login
+    </button>
+  <!-- </mat-button-toggle-group> -->
+  
+  <mat-menu #dropdownMenuOne="matMenu" xPosition="before">
+    <button mat-menu-item (click)="loginchange()" style="border-radius: 1px solid;">Admin</button>
+    <button mat-menu-item routerLink="/login" (click)="loginchange()">user</button>
+    <!-- <button mat-menu-item>Three</button> -->
+  </mat-menu>
 </mat-toolbar>
+<!-- <h1>{{value}}</h1> -->
+
+<div *ngIf="value; else Else">
+  <router-outlet></router-outlet>
+
+</div>
 
 <!-- <div>
   <table>
@@ -26,7 +47,7 @@
     </tr>
   </table>
 </div> -->
-
+<ng-template #Else>
 <div class="main-body">
 <mat-form-field >
   <mat-label>Filter</mat-label>
@@ -94,3 +115,4 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 </div>
 </div>
+</ng-template>

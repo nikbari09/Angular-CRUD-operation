@@ -13,15 +13,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmpAddEditComponent } from './emp-add-edit/emp-add-edit.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmpAddEditComponent
+    EmpAddEditComponent,
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +45,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule,
+    MatButtonToggleModule
     
   ],
   providers: [],

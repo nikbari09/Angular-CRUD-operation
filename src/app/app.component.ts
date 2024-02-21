@@ -7,6 +7,8 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +18,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class AppComponent implements OnInit{
   title = 'crud_operation';
   empdisplayForm!:any;
+  value:boolean=false;
+  
 
-  displayedColumns: string[] = ['id', 'firstname', 'lastname', 'email','dob','gender','action'];
+  loginchange(){
+   const dialogRef = this._dialog.open(LoginComponent);
+    this.value=true;
+  }
+  displayedColumns: string[] = ['id','firstname', 'lastname', 'email','dob','gender','action'];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
