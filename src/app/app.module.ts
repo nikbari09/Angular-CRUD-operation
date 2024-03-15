@@ -17,11 +17,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatButtonToggleModule
     
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

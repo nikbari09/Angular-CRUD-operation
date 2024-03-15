@@ -73,10 +73,20 @@ export class LoginComponent{
         this._empService.getsingleemp(val.id).subscribe({
           next:(res1)=>{
             console.log(res1);
+            this._empService.login(res1).subscribe({
+              next:(resl)=>{
+                console.log(resl);
+                localStorage.setItem('usertoken',JSON.stringify(resl.token));
+              },
+              error:(errl)=>{
+                console.log(errl);
+                
+              }
+            })
             // alert('Valid user.');
             // this.paraty=true;
             // this.ValidCheck();
-            this.router.navigate(["/dashboard"]);
+            this.router.navigate(["/app"]);
 
           },
           error:(err1)=>{

@@ -10,23 +10,27 @@ export class EmployeeService {
   constructor(private _http: HttpClient) { }
 
   addEmployee(data:any):Observable<any>{
-    return this._http.post('https://localhost:7246/api/file',data);
+    return this._http.post('https://localhost:7246/api/Values',data);
   }
 
   getEmployee():Observable<any>{
-    return this._http.get('https://localhost:7246/api/file');
+    return this._http.get('https://localhost:7246/api/Values/getEmployee');
   }
 
   updateEmployee(id:string ,data:any):Observable<any>{
-    return this._http.put(`https://localhost:7246/api/file/updateEmployee/${id}`,data);
+    return this._http.put(`https://localhost:7246/api/Values/updateEmployee/${id}`,data);
   }
 
   deleteEmployee(id:string):Observable<any>{
-    return this._http.delete(`http://localhost:3000/employees/${id}`);
+    return this._http.delete(`https://localhost:7246/api/Values/${id}`);
   }
 
   getsingleemp(id:string):Observable<any>{
-    return this._http.get(`http://localhost:3000/employees/${id}`);
+    return this._http.get(`https://localhost:7246/api/Values/getEmployeebyuid/${id}`);
+  }
+
+  login(data:any):Observable<any>{
+    return this._http.post('https://localhost:7246/api/User/login',data);
   }
 
 }
